@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:14:38 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/18 18:34:39 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:30:14 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = 0;
 	if (c == '\0')
 	{
@@ -36,7 +36,7 @@ char	*ft_strchr(const char *s, int c)
 // {
 // 	const char *str = "Hello, World!";
 //	char target = 'o';
-    
+//
 //     // Search for the character 'o'
 //     char *result = ft_strchr(str, target);
 //     if (result != NULL) {

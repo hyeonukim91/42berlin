@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:23:40 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/18 18:48:31 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:35:04 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = ft_strlen(s);
 	if (c == '\0')
 	{
@@ -39,7 +39,8 @@ char	*ft_strrchr(const char *s, int c)
 //     char *result = ft_strrchr(str, 'o');
 
 //     if (result != NULL) {
-//         printf("Last occurrence of 'o': %s\n", result);  // Should print: "o, world!"
+//         printf("Last occurrence of 'o': %s\n", result);  
+//         // Should print: "o, world!"
 //     } else {
 //         printf("'o' not found\n");
 //     }

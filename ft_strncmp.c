@@ -6,13 +6,13 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:22:37 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/18 18:51:24 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:40:05 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 

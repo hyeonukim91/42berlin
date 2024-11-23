@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:16:35 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/17 18:54:33 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 16:31:46 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	i;
 	size_t	dst_len;
 	size_t	src_len;
-	
+
 	i = 0;
 	dst_len = ft_strlen(dst);
 	src_len = ft_strlen(src);
