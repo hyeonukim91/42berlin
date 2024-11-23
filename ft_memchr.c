@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:36:10 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/17 20:07:08 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 17:10:55 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*memchr(const void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (((unsigned char *)s)[i] == (unsigned char *)c)
+		if (((unsigned char *)s)[i] == c)
 		{
 			return (((unsigned char *)s) + i);
 		}
@@ -27,4 +27,3 @@ void	*memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
