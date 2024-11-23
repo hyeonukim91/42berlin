@@ -35,8 +35,8 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			{
 				return ((char *)&big[i]);
 			}
-			i++;
 		}
+		i++;
 	}
 	return (NULL);
 }
