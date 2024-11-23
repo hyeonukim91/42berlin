@@ -6,7 +6,7 @@
 #    By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/17 20:42:56 by hyeonuki          #+#    #+#              #
-#    Updated: 2024/11/23 16:19:36 by hyeonuki         ###   ########.fr        #
+#    Updated: 2024/11/23 21:46:18 by hyeonuki         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,17 @@ all: $(NAME) clean
 ${NAME}: ${OFILES}
 	# generate a static library using ofiles
 	ar rcs ${NAME} ${OFILES} 
+
+# The rule %.o: %.c means that any .c file can be compiled into a .o file 
+# using the command in the body of the rule.
+# $< would be replaced with the name of the .c file, 
+# and ${<:.c=.o} would replace the .c with .o for the output file.
+
+%.o: %.c
+	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+
+${OFILES}: ${CFILES} libft.h
+
 
 clean:
 	rm -f ${OFILES}

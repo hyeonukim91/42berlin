@@ -6,13 +6,13 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:06:42 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/17 15:08:38 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:30:33 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	isalpha(int c)
+int	ft_isalpha(int c)
 {
 	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
 	{

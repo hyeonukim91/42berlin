@@ -6,8 +6,8 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:57:07 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 18:57:20 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 19:49:55 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));

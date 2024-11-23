@@ -6,13 +6,13 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:36:10 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 17:10:55 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 21:48:33 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;
 

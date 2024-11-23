@@ -6,8 +6,27 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:56:36 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 18:56:53 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:49:24 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+#include "libft.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*output;
+	size_t	s_len;
+	size_t	i;
+
+	i = 0;
+	s_len = ft_strlen(s);
+	output = (char *)malloc((sizeof(char)) * (s_len + 1));
+	if (output == NULL)
+		return (NULL);
+	while (i < s_len)
+	{
+		output[i] = (f)(i, s[i]);
+		i++;
+	}
+	return (output);
+}

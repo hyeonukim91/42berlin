@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 17:00:26 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 17:02:29 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/23 20:31:32 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include "libft.h"
 
-void	*calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	size_t	i;
 	size_t	len;
