@@ -6,13 +6,14 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:22:41 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 22:15:49 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/24 19:39:48 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
 

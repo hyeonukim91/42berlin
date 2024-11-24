@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:56:36 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 20:49:24 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/24 16:12:21 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	while (i < s_len)
 	{
-		output[i] = (f)(i, s[i]);
+		output[i] = (*f)((unsigned int)i, (char)s[i]);
 		i++;
 	}
+	output[i] = '\0';
 	return (output);
 }

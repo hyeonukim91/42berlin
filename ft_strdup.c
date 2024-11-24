@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:15:01 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 16:30:58 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/24 15:25:39 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strdup(char *src)
 	output = (char *)malloc((sizeof(char)) * (srclen + 1));
 	if (output == NULL)
 	{
-		return (0);
+		return (NULL);
 	}
 	i = 0;
 	while (src[i] != '\0')
