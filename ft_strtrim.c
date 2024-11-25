@@ -6,59 +6,64 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:55:33 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/24 19:01:13 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/25 19:05:26 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-/*
-int	firstchar(char *str, char *trim)
+
+int	is_set(char c, const char *set)
 {
 	int	i;
-	int	j;
-	int	f;
-	
-	if (trim == NULL || str == NULL)
+
+	if (set == NULL)
 	{
 		return (0);
 	}
 	i = 0;
-	f = 0;
-	while (str[i] != '\0')
-        {
-                j = -1;
-                while (trim[j] != '\0')
-                {
-			if (str[i] == trim[j])
-			{
-				break;
-			}
-                }
-        }
-	return (i);
+	while (set[i] != '\0')
+	{
+		if (set[i] == c)
+		{
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*temp;
-	int		set_num;
 	int		i;
-	int		j;
-	int		c;
+	int		start;
+	int		end;
+	char	*output;
 
-	temp = (char *)s1;
-	set_num = ft_strlen(set);
+	start = 0;
+	end = ft_strlen(s1) - 1;
+	while (is_set(s1[start], set) == 1)
+		start++;
+	while (is_set(s1[end], set) == 1)
+		end--;
+	output = (char *)malloc(sizeof(char) * (end - start + 22));
+	if (output == NULL)
+		return (NULL);
 	i = 0;
-	while (s1[i] != '\0')
+	while (start <= end)
 	{
-		j = 0;
-		while (set[j] != '\0')
-		{
-			if (si[i] == set[j])
-				c++;
-			j++;
-		}
+		output[i] = s1[start];
 		i++;
+		start++;
 	}
+	output[i] = '\0';
+	return (output);
+}
+/*
+#include <stdio.h>
+
+int	main(void)
+{
+	printf("%s\n",ft_strtrim("lorem \n ipsum \t dolor \n sit \t amet"," "));
+	return (0);
 }
 */
