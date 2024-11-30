@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:55:33 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/25 19:05:26 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/30 16:45:35 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	is_set(char c, const char *set)
 {
 	int	i;
 
-	if (set == NULL)
+	if (set == NULL || *set == '\0')
 	{
 		return (0);
 	}
@@ -34,9 +34,9 @@ int	is_set(char c, const char *set)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		i;
 	int		start;
 	int		end;
+	int		len;
 	char	*output;
 
 	start = 0;
@@ -45,17 +45,14 @@ char	*ft_strtrim(char const *s1, char const *set)
 		start++;
 	while (is_set(s1[end], set) == 1)
 		end--;
-	output = (char *)malloc(sizeof(char) * (end - start + 22));
+	if (start > end)
+		len = 0;
+	else
+		len = end - start + 1;
+	output = (char *)malloc(sizeof(char) * (len + 1));
 	if (output == NULL)
 		return (NULL);
-	i = 0;
-	while (start <= end)
-	{
-		output[i] = s1[start];
-		i++;
-		start++;
-	}
-	output[i] = '\0';
+	ft_strlcpy(output, (s1 + start), (size_t)(len + 1));
 	return (output);
 }
 /*

@@ -23,7 +23,7 @@ CFILES = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c \
 	 ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c
 
 # a form of pattern substitution in Make, .c -> .o
-OFILES = $(CFILES:.c=.o)
+OFILES = ${CFILES:.c=.o}
 
 #the name of the final file we want to create
 NAME = libft.a

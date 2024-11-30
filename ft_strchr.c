@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:14:38 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 16:30:14 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:37:38 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*ft_strchr(const char *s, int c)
 	size_t	i;
 
 	i = 0;
+	c = c % 256;
 	if (c == '\0')
 	{
 		return ((char *)s + ft_strlen(s));
@@ -26,7 +27,6 @@ char	*ft_strchr(const char *s, int c)
 		if (s[i] == c)
 		{
 			return ((char *)s + i);
-			break;
 		}
 		i++;
 	}

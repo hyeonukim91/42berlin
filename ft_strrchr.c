@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 19:23:40 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/23 16:35:04 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/30 14:44:47 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	size_t	i;
 
+	c = c % 256;
 	i = ft_strlen(s);
 	if (c == '\0')
 	{
