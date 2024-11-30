@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:03:12 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/30 18:00:43 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/11/30 18:15:24 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	*free_mem(char **output, int i)
 {
 	while (i >= 0)
 	{
-		free(output[i - 1]);
+		free(output[i]);
 		i--;
 	}
 	free(output);
@@ -92,8 +92,8 @@ int	main(void)
 	char	**test;
 
 	i = 0;
-	char	*str = "xxxxhello!xxxxxxddd";
-	char	c = 'x';
+	char	*str = "hello!";
+	char	c = ' ';
 	test = ft_split(str, c);
 	printf("%d\n", count_word(str, c));
 	printf("%d\n", word_len(str, c));

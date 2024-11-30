@@ -33,8 +33,8 @@ CC = cc
 # complie flags
 CFLAGS = -Wall -Wextra -Werror
 
-#all - fistly generate the library and then clean ofiles
-all: $(NAME) clean
+#all - firstly generate the library and then clean ofiles
+all: $(NAME)
 
 ${NAME}: ${OFILES}
 	# generate a static library using ofiles
