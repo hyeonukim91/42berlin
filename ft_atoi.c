@@ -6,11 +6,11 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:24:55 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/18 15:52:49 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/01 13:31:33 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
+#include "libft.h"
 
 int	ft_atoi(const char *nptr)
 {
