@@ -60,3 +60,18 @@ int	ft_printf(const char *str, ...)
 	}
 	return (count);
 }
+
+/*
+#include <stdio.h>
+#include <limits.h>
+int     main(void)
+{
+        int     a = 42;
+        int     b = 24;
+
+        ft_printf("%d\n", ft_printf("%c_%s_%i_%i_%X_%x_%p\n", 'c', "zzz", INT_MAX, INT_MIN, INT_MAX, INT_MIN, &a));
+        printf("%d\n",  printf("%c_%s_%i_%i_%X_%x_%p\n", 'c', "zzz", INT_MAX, INT_MIN, INT_MAX, INT_MIN, &a));
+
+        return (42);
+}
+*/
