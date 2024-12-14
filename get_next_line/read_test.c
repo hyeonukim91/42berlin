@@ -15,35 +15,45 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int	main(void)
+int main(void)
 {
-	int	fd;
-	ssize_t	bytes_read;
-	char buffer[100];
+    int fd;
+    ssize_t bytes_read;
+    char buffer[100];
+    int i = 0;
 
-	fd = open("text.txt", O_RDONLY);
-	return (0);
+    fd = open("text.txt", O_RDONLY);
+    if (fd < 0)
+    {
+        perror("Error opening file");
+        return (1);
+    }
 
-	if (fd < 0)
-	{
-		perror("Error opening file");
-		return (0);
-	}
+    // Read bytes from file until we hit the newline or EOF
+    while ((bytes_read = read(fd, &buffer[i], 1)) > 0)
+    {
+        if (buffer[i] == '\n')  // If newline is encountered, stop
+        {
+            i++;
+            break;
+        }
+        i++;
+    }
 
-	bytes_read = read(fd, buffer, sizeof(buffer) -1);
+    // Null-terminate the string
+    buffer[i] = '\0';
 
-	if (bytes_read < 0)
-	{
-		perror("Error reading file");
-		close(fd);
-		return (0);
-	}
+    if (bytes_read < 0)
+    {
+        perror("Error reading file");
+        close(fd);
+        return (1);
+    }
 
-	buffer[bytes_read] = '\0';
+    printf("First line:\n%s", buffer);
 
-	printf("file contents:\n%s", buffer);
+    close(fd);
 
-	close(fd);
-
-	return (0);
+    return (0);
 }
+
