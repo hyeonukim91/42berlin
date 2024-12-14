@@ -1,48 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthexu.c                                       :+:      :+:    :+:   */
+/*   ft_printnbr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 17:38:56 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/07 22:13:26 by hyeonuki         ###   ########.fr       */
+/*   Created: 2024/11/23 18:58:49 by hyeonuki          #+#    #+#             */
+/*   Updated: 2024/12/14 15:26:16 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int	ft_hexlen(int n)
+static	int	ft_nbrlen(long n)
 {
-	int				i;
-	unsigned int	nbr;
+	int		i;
+	long	nbr;
 
 	i = 0;
-	nbr = n;
+	if (n < 0)
+	{
+		i++;
+		nbr = -n;
+	}
+	else
+	{
+		nbr = n;
+	}
+	if (nbr == 0)
+	{
+		return (1);
+	}
 	while (nbr > 0)
 	{
-		nbr = nbr / 16;
+		nbr = nbr / 10;
 		i++;
 	}
 	return (i);
 }
 
-int	ft_puthexu(int n)
+int	ft_printnbr(long n, int val)
 {
-	unsigned int	nbr;
+	long	nbr;
 
-	nbr = n;
-	if (nbr >= 16)
+	if (n < 0)
 	{
-		ft_puthexu(nbr / 16);
+		nbr = -n;
+		ft_printchar('-', val);
 	}
-	if (nbr % 16 < 10)
+	else
 	{
-		ft_putchar((nbr % 16) + '0');
+		nbr = n;
 	}
-	if (nbr % 16 >= 10)
+	if (nbr >= 10)
 	{
-		ft_putchar((nbr % 16) + 'A' - 10);
+		ft_printnbr(nbr / 10, val);
 	}
-	return (ft_hexlen(n));
+	ft_printchar((nbr % 10) + '0', val);
+	return (ft_nbrlen(n));
 }

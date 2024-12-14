@@ -1,5 +1,5 @@
-CFILES = ft_printf.c ft_putchar.c ft_puthexl.c ft_puthexu.c \
-			ft_putnbr.c ft_putptr.c ft_putstr.c ft_putunsnbr.c
+CFILES = ft_printf.c ft_printchar.c ft_printhexl.c ft_printhexu.c \
+			ft_printnbr.c ft_printptr.c ft_printstr.c ft_printun.c
 
 # a form of pattern substitution in Make, .c -> .o
 OFILES = ${CFILES:.c=.o}
@@ -15,30 +15,30 @@ CFLAGS = -Wall -Wextra -Werror
 #all - firstly generate the library and then clean ofiles
 all: $(NAME)
 
-${NAME}: ${OFILES}
+$(NAME): $(OFILES)
 	# generate a static library using ofiles
-	ar rcs ${NAME} ${OFILES} 
+	ar rcs $(NAME) $(OFILES) 
 
 # The rule %.o: %.c means that any .c file can be compiled into a .o file 
 # using the command in the body of the rule.
-# $< would be replaced with the name of the .c file, 
-# and ${<:.c=.o} would replace the .c with .o for the output file.
+# $< Refers to the first prerequisite (the .c file) 
+# $@: Refers to the target file (the .o file).
 
 %.o: %.c
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+	$(CC) $(CFLAGS) -c $< -o $@
 
-${OFILES}: ${CFILES} ft_printf.h
+$(OFILES): $(CFILES) ft_printf.h
 
 
 clean:
-	rm -f ${OFILES}
+	rm -f $(OFILES)
 
 
 fclean: clean
-	rm -f ${NAME}
+	rm -f $(NAME)
 
 
-# rebuild delete all .0 files, start complining
-re: fclean ${NAME}
+# rebuild delete all .o files, start complining
+re: fclean $(NAME)
 
 .PHONY: all clean fclean re

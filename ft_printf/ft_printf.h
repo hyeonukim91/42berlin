@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:05:43 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/07 22:06:39 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:00:45 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsnbr(unsigned int n);
-int	ft_puthexu(int n);
-int	ft_puthexl(int n);
-int	ft_putptr(void *ptr);
+int	ft_printchar(char c, int val);
+int	ft_printstr(char *str, int val);
+int	ft_printnbr(long n, int val);
+int	ft_printun(unsigned int n, int val);
+int	ft_printhexu(int n, int val);
+int	ft_printhexl(int n, int val);
+int	ft_printptr(void *ptr, int val);
 int	ft_printf(const char *str, ...);
 
 #endif

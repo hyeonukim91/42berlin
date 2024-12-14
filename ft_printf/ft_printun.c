@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsnbr.c                                     :+:      :+:    :+:   */
+/*   ft_printun.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:11:00 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/07 22:11:48 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/14 15:08:57 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,15 @@ static	int	ft_nbrlen(unsigned int nbr)
 	return (i);
 }
 
-int	ft_putunsnbr(unsigned int n)
+int	ft_printun(unsigned int n, int val)
 {
 	unsigned int	nbr;
 
 	nbr = n;
 	if (nbr >= 10)
 	{
-		ft_putnbr(nbr / 10);
+		ft_printnbr(nbr / 10, val);
 	}
-	ft_putchar((nbr % 10) + '0');
+	ft_printchar((nbr % 10) + '0', val);
 	return (ft_nbrlen(n));
 }

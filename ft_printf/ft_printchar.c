@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 16:40:56 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/07 22:03:09 by hyeonuki         ###   ########.fr       */
+/*   Created: 2024/11/23 18:57:29 by hyeonuki          #+#    #+#             */
+/*   Updated: 2024/12/14 15:26:34 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putstr(char *str)
+int	ft_printchar(char c, int val)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
+	if (write(1, &c, 1) == -1)
 	{
-		ft_putchar(str[i]);
-		i++;
+		val = -1;
+		return (-1);
 	}
-	return (i);
+	return (1);
 }
