@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 19:03:12 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/11/30 18:15:24 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/14 21:12:29 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_word(char const *str, char c)
+static	int	count_word(char const *str, char c)
 {
 	int	i;
 	int	count;
@@ -34,7 +34,7 @@ int	count_word(char const *str, char c)
 	return (count);
 }
 
-int	word_len(char const *str, char c)
+static	int	word_len(char const *str, char c)
 {
 	int	i;
 
@@ -46,7 +46,7 @@ int	word_len(char const *str, char c)
 	return (i);
 }
 
-void	*free_mem(char **output, int i)
+static	void	*free_mem(char **output, int i)
 {
 	while (i >= 0)
 	{
