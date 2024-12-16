@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:58:49 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/14 15:26:16 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:17:24 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,11 @@ static	int	ft_nbrlen(long n)
 	return (i);
 }
 
-int	ft_printnbr(long n, int val)
+int	ft_printnbr(long n, int *val)
 {
 	long	nbr;
 
-	if (n < 0)
+	if (n < 0 && *val == 1)
 	{
 		nbr = -n;
 		ft_printchar('-', val);
@@ -52,7 +52,7 @@ int	ft_printnbr(long n, int val)
 	{
 		nbr = n;
 	}
-	if (nbr >= 10)
+	if (nbr >= 10 && *val == 1)
 	{
 		ft_printnbr(nbr / 10, val);
 	}

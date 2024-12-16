@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:09:12 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/14 15:37:40 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:17:52 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@
 // 	return (len);
 // }
 
-static	int	ft_printhexl_long(unsigned long nbr, int val)
+static	int	ft_printhexl_long(unsigned long nbr, int *val)
 {
 	char	*hex;
 	int		len;
 
 	hex = "0123456789abcdef";
 	len = 0;
-	if (nbr >= 16)
+	if (nbr >= 16 && *val == 1)
 	{
 		len += ft_printhexl_long(nbr / 16, val);
 	}
@@ -44,13 +44,11 @@ static	int	ft_printhexl_long(unsigned long nbr, int val)
 	return (len);
 }
 
-int	ft_printptr(void *ptr, int val)
+int	ft_printptr(void *ptr, int *val)
 {
-	int		len;
 	long	ptr_temp;
 
-	len = 0;
-	if (ptr == NULL)
+	if (ptr == NULL && *val == 1)
 	{
 		ft_printstr("(nil)", val);
 		return (5);
@@ -65,10 +63,5 @@ int	ft_printptr(void *ptr, int val)
 	// }
 	// if (nbr % 16 < 10)
 	// {
-	// 	ft_putchar((nbr % 16) + '0');
-	// }
-	// if (nbr % 16 >= 10)
-	// {
-	// 	ft_putchar((nbr % 16) - 10 + 'a');
-	// }
+	// 	ft_putchar((nbr % 16) + '0*
 	// return (ft_ptr_len(nbr));

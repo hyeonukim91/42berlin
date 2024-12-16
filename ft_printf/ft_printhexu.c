@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 17:38:56 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/14 15:23:38 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/16 13:18:42 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,30 @@ static	int	ft_hexlen(int n)
 	return (i);
 }
 
-int	ft_printhexu(int n, int val)
+int	ft_printhexu(int n, int *val)
 {
 	unsigned int	nbr;
 
 	nbr = n;
-	if (nbr >= 16)
+	if (nbr >= 16 && *val == 1)
 	{
 		ft_printhexu(nbr / 16, val);
 	}
-	if (nbr % 16 < 10)
+	if (nbr % 16 < 10 && *val == 1)
 	{
-		ft_printchar((nbr % 16) + '0', val);
+		if (ft_printchar((nbr % 16) + '0', val) == -1)
+		{
+			*val = -1;
+			return (-1);
+		}
 	}
-	if (nbr % 16 >= 10)
+	if (nbr % 16 >= 10 && *val == 1)
 	{
-		ft_printchar((nbr % 16) + 'A' - 10, val);
+		if (ft_printchar((nbr % 16) + 'A' - 10, val) == -1)
+		{
+			*val = -1;
+			return (-1);
+		}
 	}
 	return (ft_hexlen(n));
 }

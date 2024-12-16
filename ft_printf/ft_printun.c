@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:11:00 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/14 15:08:57 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/16 12:43:55 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static	int	ft_nbrlen(unsigned int nbr)
 	return (i);
 }
 
-int	ft_printun(unsigned int n, int val)
+int	ft_printun(unsigned int n, int *val)
 {
 	unsigned int	nbr;
 
