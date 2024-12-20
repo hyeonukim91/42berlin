@@ -6,71 +6,71 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:03:32 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/16 13:16:16 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:11:23 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int	ft_print_scanned_type(char *str, va_list args, int *val)
+static	int	ft_print_scanned_type(char *str, va_list args)
 {
+	int	r;
+
+	r = -1;
 	if (*str == 'c')
-		return (ft_printchar((char)va_arg(args, int), val));
+		r = ft_printchar((char)va_arg(args, int));
 	else if (*str == 's')
-		return (ft_printstr(va_arg(args, char *), val));
+		r = (ft_printstr(va_arg(args, char *)));
 	else if (*str == 'p')
-		return (ft_printptr(va_arg(args, void *), val));
+		r = (ft_printptr(va_arg(args, void *)));
 	else if (*str == 'i' || *str == 'd')
-		return (ft_printnbr((long)(va_arg(args, int)), val));
+		r = (ft_printnbr(va_arg(args, int)));
 	else if (*str == 'u')
-		return (ft_printnbr((long)(va_arg(args, unsigned int)), val));
-	else if (*str == 'X')
-		return (ft_printhexu(va_arg(args, int), val));
-	else if (*str == 'x')
-		return (ft_printhexl(va_arg(args, int), val));
+		r = (ft_printun((va_arg(args, unsigned int))));
+	else if (*str == 'X' || *str == 'x')
+		r = (ft_printhex(va_arg(args, int), *str));
 	else if (*str == '%')
-		return (ft_printchar('%', val));
-	return (*val);
+		r = (ft_printchar('%'));
+	return (r);
 }
 
 int	ft_printf(const char *str, ...)
 {
 	int			count;
 	int			i;
-	int			*val;
-	char		*s;
 	va_list		args;
 
-	i = 1;
-	val = &i;
-	s = (char *)str;
 	count = 0;
+	i = 1;
 	va_start(args, str);
-	while (*s && *val == 1)
-	{
-		if (*s != '%')
-			count = count + ft_printchar(*s, val);
-		if (*s == '%')
-		{
-			count = count + ft_print_scanned_type(s + 1, args, val);
-			s++;
-		}
-		s++;
-	}
-	if (*val == -1)
+	if (str == (char *) NULL)
 		return (-1);
+	while (*str)
+	{
+		if (*str != '%')
+			count = count + ft_printchar(*str);
+		if (*str == '%')
+		{
+			i = ft_print_scanned_type((char *)(str + 1), args);
+			if (i == -1)
+				return (-1);
+			count += i;
+			str++;
+		}
+		str++;
+	}
 	return (count);
 }
 // #include <stdio.h>
 // #include <limits.h>
 // int     main(void)
 // {
-//         int		a = 42;
+// 	int		a = 42;
 // 	int		*np = NULL;
 // 	char	b = 'b';
 
-//         ft_printf("%d\n", ft_printf("%c_%s_%i_%d_%p\n", 0, "z", 0, 0, &a));
-//         printf("%d\n",  printf("%c_%s_%i_%d_%p\n", 0, "z", 0, 0, &a));
+//         ft_printf("%d\n", ft_printf("%c_%s_%i_%d_%p\n", 0, "", 0, 0, &a));
+//         printf("%d\n",  printf("%c_%s_%i_%d_%p\n", 0, "", 0, 0, &a));
 //         ft_printf("%d\n", ft_printf("%i_%i_\n", INT_MAX, INT_MIN));
 //         printf("%d\n",  printf("%i_%i_\n", INT_MAX, INT_MIN));
 //         ft_printf("%d\n", ft_printf("%X_%x_\n", INT_MAX, INT_MIN));

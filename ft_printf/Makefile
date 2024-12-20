@@ -1,8 +1,7 @@
-CFILES = ft_printf.c ft_printchar.c ft_printhexl.c ft_printhexu.c \
-			ft_printnbr.c ft_printptr.c ft_printstr.c ft_printun.c
+CFILES = ft_printf.c ft_print_char.c ft_print_nbr.c ft_print_hex.c
 
 # a form of pattern substitution in Make, .c -> .o
-OFILES = ${CFILES:.c=.o}
+OFILES = $(CFILES:.c=.o)
 
 #the name of the final file we want to create
 NAME = libftprintf.a

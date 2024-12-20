@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:05:43 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/16 12:37:23 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/20 18:59:41 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int	ft_printchar(char c, int *val);
-int	ft_printstr(char *str, int *val);
-int	ft_printnbr(long n, int *val);
-int	ft_printun(unsigned int n, int *val);
-int	ft_printhexu(int n, int *val);
-int	ft_printhexl(int n, int *val);
-int	ft_printptr(void *ptr, int *val);
+int	ft_printchar(char c);
+int	ft_printstr(char *str);
+int	ft_printnbr(long n);
+int	ft_printun(unsigned int n);
+int	ft_printhex(int nbr, char c);
+int	ft_printptr(void *ptr);
 int	ft_printf(const char *str, ...);
 
 #endif

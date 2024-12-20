@@ -6,62 +6,69 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 22:09:12 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/16 13:17:52 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/20 19:16:20 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-// static	int	ft_ptr_len(long ptr)
-// {
-// 	int	len;
+int	ft_printhex(int nbr, char c)
+{
+	char			*hex;
+	int				len;
+	int				r;
+	unsigned int	n;
 
-// 	len = 0;
-// 	if (ptr == 0)
-// 	{
-// 		return (0);
-// 	}
-// 	while (ptr != 0)
-// 	{
-// 		len++;
-// 		ptr = ptr / 16;
-// 	}
-// 	return (len);
-// }
+	len = 0;
+	n = nbr;
+	if (c == 'X')
+		hex = "0123456789ABCDEF";
+	else
+		hex = "0123456789abcdef"; 
+	if (n >= 16)
+	{
+		len += ft_printhex(n / 16, c);
+	}
+	r = ft_printchar(hex[n % 16]);
+	if (r == -1)
+		return (-1);
+	len += r;
+	return (len);
+}
 
-static	int	ft_printhexl_long(unsigned long nbr, int *val)
+static	int	ft_printhex_long(unsigned long nbr)
 {
 	char	*hex;
 	int		len;
 
 	hex = "0123456789abcdef";
 	len = 0;
-	if (nbr >= 16 && *val == 1)
+	if (nbr >= 16)
 	{
-		len += ft_printhexl_long(nbr / 16, val);
+		len += ft_printhex_long(nbr / 16);
 	}
-	len += ft_printchar(hex[nbr % 16], val);
+	len += ft_printchar(hex[nbr % 16]);
 	return (len);
 }
 
-int	ft_printptr(void *ptr, int *val)
+int	ft_printptr(void *ptr)
 {
+	int		r1;
+	int		r2;
 	long	ptr_temp;
 
-	if (ptr == NULL && *val == 1)
+	if (ptr == NULL)
 	{
-		ft_printstr("(nil)", val);
+		if (ft_printstr("(nil)") == -1)
+			return (-1);
 		return (5);
 	}
 	ptr_temp = (unsigned long)ptr;
-	return (ft_printstr("0x", val) + ft_printhexl_long(ptr_temp, val));
+	r1 = ft_printstr("0x");
+	if (r1 == -1)
+		return (-1);
+	r2 = ft_printhex_long(ptr_temp);
+	if (r2 == -1)
+		return (-1);
+	return (r1 + r2);
 }
-
-	// if (nbr >= 16)
-	// {
-	// 	ft_puthexl_long(nbr / 16);
-	// }
-	// if (nbr % 16 < 10)
-	// {
-	// 	ft_putchar((nbr % 16) + '0*
-	// return (ft_ptr_len(nbr));

@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printstr.c                                      :+:      :+:    :+:   */
+/*   ft_printchar.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 16:40:56 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/16 13:12:07 by hyeonuki         ###   ########.fr       */
+/*   Created: 2024/11/23 18:57:29 by hyeonuki          #+#    #+#             */
+/*   Updated: 2024/12/20 18:17:06 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printstr(char *str, int *val)
+int	ft_printchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
+int	ft_printstr(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' && *val == 1)
+	if (str == NULL)
 	{
-		if (ft_printchar(str[i], val) == -1)
+		if (write(1, "(null)", 6) == -1)
+		{
+			return (-1);
+		}
+		return (6);
+	}
+	while (str[i] != '\0')
+	{
+		if (ft_printchar(str[i]) == -1)
 		{
 			return (-1);
 		}
