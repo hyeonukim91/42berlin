@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printchar.c                                     :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 18:57:29 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/20 18:17:06 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/20 20:04:10 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printchar(char c)
+int	ft_print_char(char c)
 {
 	return (write(1, &c, 1));
 }
 
-int	ft_printstr(char *str)
+int	ft_print_str(char *str)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	ft_printstr(char *str)
 	}
 	while (str[i] != '\0')
 	{
-		if (ft_printchar(str[i]) == -1)
+		if (ft_print_char(str[i]) == -1)
 		{
 			return (-1);
 		}
