@@ -59,6 +59,7 @@ int	ft_printf(const char *str, ...)
 		}
 		str++;
 	}
+	va_end(args);
 	return (count);
 }
 // #include <stdio.h>
