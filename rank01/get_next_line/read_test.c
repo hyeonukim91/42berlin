@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   read_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 19:15:05 by hyeonuki          #+#    #+#             */
-/*   Updated: 2024/12/08 19:26:13 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2024/12/22 18:44:03 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int main(void)
 {
     int fd;
     ssize_t bytes_read;
-    char buffer[100];
+    static char buffer[100];
     int i = 0;
 
     fd = open("text.txt", O_RDONLY);
@@ -52,6 +52,17 @@ int main(void)
 
     printf("First line:\n%s", buffer);
 
+    while ((bytes_read = read(fd, &buffer[i], 1)) > 0)
+    {
+        if (buffer[i] == '\n')  // If newline is encountered, stop
+        {
+            i++;
+            break;
+        }
+        i++;
+    }
+    printf("second print\n");
+    printf("%s", buffer);
     close(fd);
 
     return (0);
