@@ -18,7 +18,7 @@ static	int	ft_print_scanned_type(char *str, va_list args)
 
 	r = -1;
 	if (*str == 'c')
-		r = ft_print_char((char)va_arg(args, int));
+		r = ft_print_char(va_arg(args, char));
 	else if (*str == 's')
 		r = (ft_print_str(va_arg(args, char *)));
 	else if (*str == 'p')
