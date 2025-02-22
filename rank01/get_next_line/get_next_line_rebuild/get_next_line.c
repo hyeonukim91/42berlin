@@ -2,61 +2,80 @@
 
 char	*get_next_line(int fd)
 {
-    char    *content;
-    char    *line;
-    static int  by_read_sum;
+	char	*output;
+    static char  *line;
 
-    by_read_sum = 0;
+	if (BUFFER_SIZE == 0)
+		return (NULL);
 
-
-
+	line = read_file(fd);
+	output = return_line(line);
+	return (output);
 }
 
 /*
-function 1 -> fead all file and save the content to the content
+function 1 -> read one line from the file and save the content to 'file'. -> can contain chars after new line character
 */
-char    *read_file(int fd)
+char    *read_line(int fd)
 {
     char    *buff;
-    char    *file;
-	int		rd_bytes;
+    char    *line;
+	int		read_bytes;
 
 	buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buff)
 		return (NULL);
-	rd_bytes = 1;
-	while (!ft_strchr(file, '\n') && rd_bytes != 0)
+	read_bytes = 1;
+	while (ft_strchr(line, '\n') == NULL && read_bytes != 0)
 	{
-		rd_bytes = read(fd, buff, BUFFER_SIZE);
-		if (rd_bytes == -1)
+		read_bytes = read(fd, buff, BUFFER_SIZE);
+		if (read_bytes == -1)
 		{
 			free(buff);
 			return (NULL);
 		}
-		buff[rd_bytes] = '\0';
-		file = ft_strjoin(file, buff);
+		buff[read_bytes + 1] = '\0';
+		line = ft_strjoin(line, buff);
 	}
 	free(buff);
-	return (file);
+	return (line);
+}
+/*
+	function2: return a line till the new line char, and save the remaining part to 'line'
+*/
+char	*return_line(char *line)
+{
+	int		i;
+	int		j;
+	char	*output;
+	char	*new_line;
 
+	output = malloc(ft_strlen(line + 1) * sizeof(char));
+	if (!output)
+	{
+		free(output);
+		return (NULL);
+	}
+	i = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		output[i] = line[i];
+		i++;
+	}
+	output[i] = '\0';
+	j = 0;
+	while (line[i])
+	{
+		new_line[j] = line[i];
+		i++;
+		j++;
+	}
+	new_line[j + 1] = '\0';
+	line = new_line;
+	return (output);
 }
 
-
-/*
-function 2 -> read one line from fd, update bytes_read
-*/
-
-char    *read_one_line(char *file, int by_read_sum)
+char	*new_line(char *line)
 {
-    char    *buff;
-    int     by_read_buffer;
-    int     by_read_line;
-
-    buff = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if (!buff)
-		return (NULL);
-    by_read_buffer = 1;
-    //while (!ft_strchr(file, '\n') && by_read_buffer != 0)   
-    
 
 }
