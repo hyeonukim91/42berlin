@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 18:32:39 by hyeonuki          #+#    #+#             */
-/*   Updated: 2025/02/23 15:07:31 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2025/03/02 12:11:46 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char	*get_next_line(int fd)
 	char		*output;
 	static char	*line;
 
-	if (BUFFER_SIZE == 0)
+	if (BUFFER_SIZE <= 0)
 		return (NULL);
-	line = read_line(fd);
-	output = return_line(line);
+	line = read_line(fd, line);
+	output = return_line(line); //update_stash_and_ret_line
 	return (output);
 }
 
@@ -28,9 +28,8 @@ char	*get_next_line(int fd)
 function 1 -> read one line from the file and save the content to 'file' 
 -> can contain chars after the new line character
 */
-char	*read_line(int fd)
+char	*read_line(int fd, char *line)
 {
-	static char	*line;
 	char		*buff;
 	int			read_bytes;
 
@@ -38,15 +37,15 @@ char	*read_line(int fd)
 	if (!buff)
 		return (NULL);
 	read_bytes = 1;
-	while (ft_strchr(line, '\n') == NULL && read_bytes != 0)
+	while (ft_strchr(line, '\n') == NULL && read_bytes > 0)
 	{
 		read_bytes = read(fd, buff, BUFFER_SIZE);
-		if (read_bytes == -1)
+		if (read_bytes < 0 )
 		{
 			free(buff);
 			return (NULL);
 		}
-		buff[read_bytes + 1] = '\0';
+		buff[read_bytes] = '\0';
 		line = ft_strjoin(line, buff);
 	}
 	free(buff);
@@ -62,18 +61,20 @@ char	*return_line(char *line)
 	int		i;
 	char	*output;
 
-	output = malloc(ft_strlen(line + 1) * sizeof(char));
+	i = 0;
+	while (line[i] != '\n')
+		i++;
+	output = malloc(sizeof(char) * (i + 2));
 	if (!output)
-	{
-		free(output);
 		return (NULL);
-	}
 	i = 0;
 	while (line[i] && line[i] != '\n')
 	{
 		output[i] = line[i];
 		i++;
 	}
+	if (line[i] == '\n') //??
+		output[i++] = '\n';
 	output[i] = '\0';
 	line = rest_to_line(line, i);
 	return (output);
@@ -88,10 +89,12 @@ char	*rest_to_line(char *s1, int i)
 	char	*output;
 	int		j;
 
-	output = malloc(ft_strlen(s1 + 1) * sizeof(char));
+	j = 0;
+	while (s1[i + j] != '\0')
+		j++;
+	output = malloc(sizeof(char) * (j + 2));
 	if (!output)
 	{
-		free(output);
 		return (NULL);
 	}
 	j = 0;
@@ -102,5 +105,6 @@ char	*rest_to_line(char *s1, int i)
 		j++;
 	}
 	output[j] = '\0';
+	free (s1); // check this 
 	return (output);
 }
