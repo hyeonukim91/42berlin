@@ -47,38 +47,40 @@ char	*update_buffer(char *buffer)
 	return (buffer);
 }
 
-char	*get_next_line(int fd)
+char	*read_line_from_file(int fd, char *buffer)
 {
-	static char	*buffer;
-	char			*stash;
-	int				bytes_read;
+	char	*stash;
+	int		bytes_read;
 
-	stash = ft_strdup("");
-	if(!buffer)
-		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buffer)
-		return (NULL);
 	bytes_read = 1;
+	stash = ft_strdup("");
 	while (bytes_read > 0 && !ft_strchr(stash, '\n'))
 	{
-		//printf("buffer: %s \n", buffer);
-		//printf("stash: %s \n", stash);
 		if (stash[0] == '\0')
-		{
 			stash = ft_strdup(buffer);
-			//printf("%s", buffer);
-			//printf("%s", stash);
-		}
 		bytes_read = read(fd, buffer, BUFFER_SIZE);
-		if (bytes_read == 0)
-			return (stash);
 		if (bytes_read < 0)
 			return (NULL);
 		buffer[bytes_read] = '\0';
 		stash = ft_strjoin(stash, buffer);
 	}
 	buffer = update_buffer(buffer);
-	return(extract_line_from_stash(stash));
+	stash = extract_line_from_stash(stash);
+}
+
+char	*get_next_line(int fd) //+ buffer size check
+{
+	static char	*buffer;
+	char			*dest;
+
+	if (!buffer)
+		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		return (NULL);
+	read_line_from_file(fd, buffer);
+	buffer = update_buffer(buffer);
+	dest = extract_line_from_stash(dest);
+	return(dest);
 }
 
 int	main(void)
@@ -91,7 +93,7 @@ int	main(void)
 	fd = open("text.txt", O_RDONLY);
 	if (fd < 0)
 		return (1);
-	while (i < 4)
+	while (i < 2)
 	{
 		dest = get_next_line(fd);
 		printf("%s", dest);
