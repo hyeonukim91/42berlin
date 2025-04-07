@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyeonuki <hyeonuki@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 12:56:12 by hyeonuki          #+#    #+#             */
-/*   Updated: 2025/04/05 12:56:57 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:11:14 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@
 # include <stdio.h>
 
 char	*ft_strchr(const char *str, int c);
-char	*ft_strdup(char *src);
 size_t	ft_strlen(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 char	*file_to_stash(int fd, char *stash);
-char	*add_buffer_to_stash(char *stash, char *buffer);
 char	*extract_line_from_stash(char *stash);
 char	*update_stash(char *stash);
 char	*get_next_line(int fd);

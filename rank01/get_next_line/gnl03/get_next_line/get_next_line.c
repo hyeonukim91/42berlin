@@ -6,7 +6,7 @@
 /*   By: hyeonuki <hyeonuki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/05 12:39:08 by hyeonuki          #+#    #+#             */
-/*   Updated: 2025/04/05 16:26:26 by hyeonuki         ###   ########.fr       */
+/*   Updated: 2025/04/07 17:11:02 by hyeonuki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,6 @@ char	*file_to_stash(int fd, char *stash)
 	return (stash);
 }
 
-char	*add_buffer_to_stash(char *stash, char *buffer)
-{
-	char	*dest;
-
-	if (stash == NULL)
-	{
-		stash = malloc(sizeof(char) * 1);
-		if (stash == NULL)
-			return (NULL);
-		stash[0] = '\0';
-	}
-	if (buffer == NULL)
-		return (NULL);
-	dest = malloc(sizeof(char) * (ft_strlen(stash) + ft_strlen(buffer) + 1));
-	if (dest == NULL)
-		return (NULL);
-	dest = ft_strjoin(dest, stash);
-	dest = ft_strjoin(dest, buffer);
-	free (stash);
-	return (dest);
-}
 
 char	*extract_line_from_stash(char *stash)
 {
@@ -81,7 +60,7 @@ char	*extract_line_from_stash(char *stash)
 	i = 0;
 	if (stash[0] == '\0' || stash == NULL)
 		return (NULL);
-	while (stash[i] != '\n' && stash[i] != '\0' && stash)
+	while (stash[i] != '\n' && stash[i] != '\0')
 		i++;
 	dest = malloc(sizeof(char) * (i + 2));
 	if (dest == NULL)
