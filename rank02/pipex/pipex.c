@@ -6,7 +6,7 @@
 /*   By: hyeonukim <hyeonukim@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 18:38:23 by hyeonukim         #+#    #+#             */
-/*   Updated: 2025/05/13 18:53:25 by hyeonukim        ###   ########.fr       */
+/*   Updated: 2025/05/16 15:18:10 by hyeonukim        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 process flow
 
 1. check arguments
+1-1. is the number of arguments correct?
+1-2. do infile and outfile exist?
 
 2. read from infile
 
@@ -35,3 +37,10 @@ required functions
 4. parsing functions
 
 */
+
+int	main(int argc, char **argv)
+{
+	
+
+}
+
